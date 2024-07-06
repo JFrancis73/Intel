@@ -76,20 +76,20 @@ def Install():
 	else:
 		print("[+] Initialized cryptsetup")
 		
-	result = subprocess.run(["find", "/home/","-name", "intellicrypt.py"],stdout=subprocess.PIPE, stderr=subprocess.PIPE,text=True)
-	if result.returncode != 0:
-		print("[-] Error", "Could not find script ")
-		return False
+	#result = subprocess.run(["find", "/home/","-name", "intellicrypt.py"],stdout=subprocess.PIPE, stderr=subprocess.PIPE,text=True)
+	#if result.returncode != 0:
+		#print("[-] Error", "Could not find script ")
+		#return False
 		
-	path = result.stdout.strip()
-	result = subprocess.run(["chmod","775",path],stdout=subprocess.PIPE, stderr=subprocess.PIPE,text=True)
+	#path = result.stdout.strip()
+	result = subprocess.run(["chmod","775","./intellicrypt.py"],stdout=subprocess.PIPE, stderr=subprocess.PIPE,text=True)
 	if result.returncode != 0:
 		print("[-] Error", "Failed to Create Executable")
 		return False
 	else:
 		print("[+] Created Executable")
 		
-	result = subprocess.run(["cp",path,"/usr/local/src/"],stdout=subprocess.PIPE, stderr=subprocess.PIPE,text=True)
+	result = subprocess.run(["cp","./intellicrypt.py","/usr/local/src/"],stdout=subprocess.PIPE, stderr=subprocess.PIPE,text=True)
 	if result.returncode != 0:
 		print("[-] Error", "Failed to transfer source.")
 		return False
@@ -140,6 +140,8 @@ elif sys.argv[1] == "uninstall":
 		if Uninstall():
 			print("[+] IntelliCrypt Uninstalled Successfully!")
 		else:
-			print("[-] Could not Uninstall the application!")   
+			print("[-] Could not Uninstall the application!")
+	else:
+		print("[-] Uninstall Aborted!")
 else:
 	print("Invalid option: Kindly read the documentaion: linktogithub")
