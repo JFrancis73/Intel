@@ -21,8 +21,8 @@ def Install():
 	user = user.stdout.split()[0].strip()
 	
 	result = subprocess.run(["sudo","-u",user,"pip","install","-r","requirements.txt"],stdout=subprocess.PIPE, stderr=subprocess.PIPE,text=True)
-	print(result.stdout)
-	print(result.stderr)
+	#print(result.stdout)
+	#print(result.stderr)
 	if result.returncode != 0:
 		print("[-] Error", "Failed to install required python libraries")
 		return False
