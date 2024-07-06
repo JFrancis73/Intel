@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 from tkinter import Tk, Label, Button, Entry, Frame, filedialog, StringVar, Radiobutton, OptionMenu
 from tkinter import  LEFT, RIGHT, CENTER, W, END, DISABLED
