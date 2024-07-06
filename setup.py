@@ -82,7 +82,7 @@ def Install():
 		return False
 		
 	path = result.stdout.strip()
-	result = subprocess.run(["chmod","+x",path],stdout=subprocess.PIPE, stderr=subprocess.PIPE,text=True)
+	result = subprocess.run(["chmod","775",path],stdout=subprocess.PIPE, stderr=subprocess.PIPE,text=True)
 	if result.returncode != 0:
 		print("[-] Error", "Failed to Create Executable")
 		return False
