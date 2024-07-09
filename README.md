@@ -36,6 +36,12 @@ Note: It is important and a reccomended practice to have multiple copies of impo
 
 Before diving in, get a quick glimpse of Intellicrypt's capabilities through a video demonstration:
 
+
+
+https://github.com/JFrancis73/Intel/assets/108940466/34721026-4de1-4ee8-b670-26fc147993ec
+
+
+
 **Installation**
 
 Getting started with Intellicrypt is a breeze! Choose your preferred installation method:
@@ -111,6 +117,21 @@ Note: You will have to run the tool as root if you intend to encrypt drives with
 
 Once you launch it, just choose your preffered action and the intuitive GUI will prompt you for all the required information and the application will handle the rest.
 Here are a few examples of what using the tool is like:
+
+![icrypt0](https://github.com/JFrancis73/Intel/assets/108940466/669d979e-cae9-44ab-bc4a-34b083b46df5)
+
+*Encrypting Files/Folders:*
+
+![icrypt1](https://github.com/JFrancis73/Intel/assets/108940466/12ef839e-9ade-48af-a0e3-cfacd6429b55)![icrypt2](https://github.com/JFrancis73/Intel/assets/108940466/b361e9b1-ca25-4803-96cb-6eb36956deaf)
+
+*Decrypting Files/Folders:*
+
+![icrypt3](https://github.com/JFrancis73/Intel/assets/108940466/65f656f3-6621-4a9f-88c8-69552aeb28f5)![icrypt4](https://github.com/JFrancis73/Intel/assets/108940466/50334766-b8ea-47b5-9098-0ecd5fff422e)
+
+*Encrypting Drives*
+
+![icrypt5](https://github.com/JFrancis73/Intel/assets/108940466/b2bb875d-eb48-4d26-a0ac-bb1d5f62f7fe)
+
 
 **Uninstalling Intellicrypt**
 
