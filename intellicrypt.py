@@ -320,7 +320,14 @@ def decrypt_file_folder():
 					key = hashlib.sha256((password_entry.get() + i[1] + i[0]).encode()).hexdigest()
 					kdf = pbkdf2.PBKDF2HMAC(algorithm=hashes.SHA256(),length=32,salt=i[1].encode(),iterations=50000)
 					key = kdf.derive(key.encode()).decode("iso-8859-1")
-					result = subprocess.run(["ccrypt","--decrypt","--recursive","--force",selected_file.get(),"--key",key,"--suffix",".encrypted"],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+					if selection_type.get() == "File":
+						result = subprocess.run(["ccrypt","--decrypt","--cat","--recursive","--force",selected_file.get(),"--key",key,"--mismatch","--suffix",".encrypted"],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+						with open(selected_file.get()[:selected_file.get().rfind(".")],"wb") as File:
+							File.write(result.stdout)
+						subprocess.run(["rm",selected_file.get()],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+						#print(result.stderr)
+					else:
+						result = subprocess.run(["ccrypt","--decrypt","--recursive","--force",selected_file.get(),"--key",key,"--suffix",".encrypted"],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
 					if result.returncode != 0:
 						messagebox.showerror("Error", "Files Not Decrypted")
 						#check_progress = 1

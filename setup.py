@@ -34,12 +34,13 @@ def Install():
 		print("[+] Python libraries installed")
 			
 	if not os.path.isfile("/var/lib/IntelliCrypt/Intellicrypt.db"):
-		result = subprocess.run(["mkdir","/var/lib/IntelliCrypt/"],stdout=subprocess.PIPE, stderr=subprocess.PIPE,text=True)
-		if result.returncode != 0:
-			print("[-] Error", "Failed to create database")
-			return False
-		else:
-			print("[+] Directory Initialized")
+		if not os.path.exists("/var/lib/IntelliCrypt/"):
+			result = subprocess.run(["mkdir","/var/lib/IntelliCrypt/"],stdout=subprocess.PIPE, stderr=subprocess.PIPE,text=True)
+			if result.returncode != 0:
+				print("[-] Error", "Failed to create database")
+				return False
+			else:
+				print("[+] Directory Initialized")
 			
 		result = subprocess.run(["touch","/var/lib/IntelliCrypt/Intellicrypt.db"],stdout=subprocess.PIPE, stderr=subprocess.PIPE,text=True)
 		if result.returncode != 0:
@@ -61,6 +62,10 @@ def Install():
 			
 	conn = sqlite3.connect("/var/lib/IntelliCrypt/Intellicrypt.db")
 	conn.execute("CREATE TABLE IF NOT EXISTS Auth_Table(UID VARCHAR(32) PRIMARY KEY, FileName VARCHAR(100), Password VARCHAR(128))")
+	
+	result = subprocess.run(["apt","update"],stdout=subprocess.PIPE, stderr=subprocess.PIPE,text=True)
+	if result.returncode != 0:
+		print("[-] Error", "Failed to apt update")
 	
 	result = subprocess.run(["apt","install","ccrypt","-y"],stdout=subprocess.PIPE, stderr=subprocess.PIPE,text=True)
 	if result.returncode != 0:
