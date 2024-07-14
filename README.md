@@ -4,6 +4,7 @@
 
 [![Version](https://img.shields.io/badge/version-1.5-blue.svg)](https://github.com/JFrancis73/intellicrypt/releases/tag/v1.5)
 [![Python](https://img.shields.io/badge/python-3.11%2B-blue.svg)](https://www.python.org/downloads/)
+[![Known Vulnerabilities](https://snyk.io/test/github/JFrancis73/Intel}/badge.svg)](https://snyk.io/test/github/JFrancis73/Intel)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 </div>
 
