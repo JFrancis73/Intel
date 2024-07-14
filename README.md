@@ -4,7 +4,7 @@
 
 [![Version](https://img.shields.io/badge/version-1.5-blue.svg)](https://github.com/JFrancis73/intellicrypt/releases/tag/v1.5)
 [![Python](https://img.shields.io/badge/python-3.11%2B-blue.svg)](https://www.python.org/downloads/)
-[![Known Vulnerabilities](https://snyk.io/test/github/JFrancis73/Intel}/badge.svg)](https://snyk.io/test/github/JFrancis73/Intel)
+[![Known Vulnerabilities](https://snyk.io/test/github/JFrancis73/IntelliCrypt}/badge.svg)](https://snyk.io/test/github/JFrancis73/IntelliCrypt)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 </div>
 
@@ -57,8 +57,8 @@ Getting started with Intellicrypt is a breeze! Choose your preferred installatio
 
 **Clone the repository:**
 
-    git clone https://github.com/JFrancis73/Intel
-    cd Intel/
+    git clone https://github.com/JFrancis73/IntelliCrypt.git
+    cd IntelliCrypt/
 
 **1. Assisted Installation (Recommended):**
 
@@ -129,25 +129,25 @@ Here are a few examples of what using the tool is like:
 
 <div align="center">
 	
-![icrypt0](https://github.com/JFrancis73/Intel/assets/108940466/669d979e-cae9-44ab-bc4a-34b083b46df5)
+![icrypt0](https://github.com/JFrancis73/IntelliCrypt/assets/108940466/669d979e-cae9-44ab-bc4a-34b083b46df5)
 
 
 **Encrypting Files/Folders:**
 
 
-![icrypt1](https://github.com/JFrancis73/Intel/assets/108940466/12ef839e-9ade-48af-a0e3-cfacd6429b55)![icrypt2](https://github.com/JFrancis73/Intel/assets/108940466/b361e9b1-ca25-4803-96cb-6eb36956deaf)
+![icrypt1](https://github.com/JFrancis73/IntelliCrypt/assets/108940466/12ef839e-9ade-48af-a0e3-cfacd6429b55)![icrypt2](https://github.com/JFrancis73/IntelliCrypt/assets/108940466/b361e9b1-ca25-4803-96cb-6eb36956deaf)
 
 
 **Decrypting Files/Folders:**
 
 
-![icrypt3](https://github.com/JFrancis73/Intel/assets/108940466/65f656f3-6621-4a9f-88c8-69552aeb28f5)![icrypt4](https://github.com/JFrancis73/Intel/assets/108940466/50334766-b8ea-47b5-9098-0ecd5fff422e)
+![icrypt3](https://github.com/JFrancis73/IntelliCrypt/assets/108940466/65f656f3-6621-4a9f-88c8-69552aeb28f5)![icrypt4](https://github.com/JFrancis73/IntelliCrypt/assets/108940466/50334766-b8ea-47b5-9098-0ecd5fff422e)
 
 
 **Encrypting Drives:**
 
 
-![icrypt5](https://github.com/JFrancis73/Intel/assets/108940466/b2bb875d-eb48-4d26-a0ac-bb1d5f62f7fe)
+![icrypt5](https://github.com/JFrancis73/IntelliCrypt/assets/108940466/b2bb875d-eb48-4d26-a0ac-bb1d5f62f7fe)
 
 </div>
 
