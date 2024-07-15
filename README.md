@@ -10,8 +10,13 @@
 
 # Secure Your Data with Intellicrypt
 
-IntelliCrypt is a data encryption tool which prioritizes confidentiality above all which makes it the ideal choice to protect data that is highly sensitive in nature. It follows a zero-knowledge model, keeping the encryption information separate from the files. This is achieved by separating the authentication element, which follows the “Challenge Handshake Authenication Protocol”,  from the rest of the functionality. The tool achieves a high level of confidentiality by implementing a "scorched-earth” defense mechanism that causes the encrypted data to self-destruct if tampering is detected. This design choice also enables the encrypted files to serve as a honeypot since the loss of data would indicate tampering or an attempt to bypass authentication. Additionally, the tool also helps users encrypt entire storage devices like USBs using the Linux Unified Key System (LUKS). 
-Here's a breakdown of the key features of its encryption model:
+IntelliCrypt is a data encryption tool which prioritizes confidentiality above all which makes it the ideal choice to protect data that is highly sensitive in nature. It follows a zero-knowledge model, keeping the encryption information separate from the files. This is achieved by separating the authentication element, which follows the “Challenge Handshake Authenication Protocol”,  from the rest of the functionality. The tool achieves a high level of confidentiality by implementing a "scorched-earth” defense mechanism that causes the encrypted data to self-destruct if tampering is detected. This design choice also enables the encrypted files to serve as a honeypot since the loss of data would indicate tampering or an attempt to bypass authentication. Additionally, the tool also helps users encrypt entire storage devices like USBs using the Linux Unified Key System (LUKS).
+
+[Click here to view a powerpoint presentation](https://docs.google.com/presentation/d/1hBbo8b_C8CAcybcovo93X5S-D_BbWcXj/edit#slide=id.p1) 
+
+Or
+
+Here's a breakdown of some of the key features of the application:
 
 *Zero-Knowledge Encryption:*
 
