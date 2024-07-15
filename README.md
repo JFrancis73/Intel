@@ -2,7 +2,7 @@
 
    ![IntelliCrypt](https://github.com/user-attachments/assets/5aad5a92-5089-4dd0-953f-67338bdf47e6)
 
-[![Version](https://img.shields.io/badge/version-1.5-blue.svg)](https://github.com/JFrancis73/intellicrypt/releases/tag/v1.5)
+[![Version](https://img.shields.io/badge/version-1.5.1-blue.svg)](https://github.com/JFrancis73/intellicrypt/)
 [![Python](https://img.shields.io/badge/python-3.11%2B-blue.svg)](https://www.python.org/downloads/)
 [![Known Vulnerabilities](https://snyk.io/test/github/JFrancis73/IntelliCrypt}/badge.svg)](https://snyk.io/test/github/JFrancis73/IntelliCrypt)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
@@ -10,7 +10,8 @@
 
 # Secure Your Data with Intellicrypt
 
-Intellicrypt offers a unique approach to data encryption, prioritizing confidentiality with a multi-layered defense system. Here's a breakdown of the key features of its encryption model:
+IntelliCrypt is a data encryption tool which prioritizes confidentiality above all which makes it the ideal choice to protect data that is highly sensitive in nature. It follows a zero-knowledge model, keeping the encryption information separate from the files. This is achieved by separating the authentication element, which follows the “Challenge Handshake Authenication Protocol”,  from the rest of the functionality. The tool achieves a high level of confidentiality by implementing a "scorched-earth” defense mechanism that causes the encrypted data to self-destruct if tampering is detected. This design choice also enables the encrypted files to serve as a honeypot since the loss of data would indicate tampering or an attempt to bypass authentication. Additionally, the tool also helps users encrypt entire storage devices like USBs using the Linux Unified Key System (LUKS). 
+Here's a breakdown of the key features of its encryption model:
 
 *Zero-Knowledge Encryption:*
 
@@ -39,7 +40,28 @@ Intellicrypt offers a unique approach to data encryption, prioritizing confident
   Encrypted files can act as honeypots.
   Data destruction triggered by tampering attempts alerts users to potential security breaches.
 
-Note: The "Scorched-Earth" protocol is restricted to the encryption and decryption of single files as of version 1.5 in order to minimize data loss.
+*Drive Encryption:*
+
+  Enables users to encrypt entire storage devices like USBs, hard disks, or solid-state drives using the Linux Unified Key System (LUKS).
+  
+---
+> [!NOTE]  
+> The "Scorched-Earth" protocol is restricted to the encryption and decryption of single files as of version 1.5 in order to minimize data loss.
+---
+
+# Architecture
+
+Here is a very high level overview of the working of the Application:
+
+![image](https://github.com/user-attachments/assets/0b0427e3-b6d8-4e64-a387-8251e8df45a7)
+
+
+**Technologies Used:**
+
+- Operating System: Linux
+- Programming Languages: Python, SQL
+- Cryptographic Algorithms: AES-256(CBC), SHA3-512, SHA256, MD5, PBKDF
+- Other Technologies: Linux Unified Key Setup (LUKS)
 
 **See it in Action**
 
@@ -121,8 +143,10 @@ If you did the assisted install, you can use the tool simply by typing:
 If you did the manual install, you can run:
 
     python3 intellicrypt.py
-
-Note: You will have to run the tool as root if you intend to encrypt drives with it.
+---
+> [!NOTE]  
+> You will have to run the tool as root if you intend to encrypt drives with it.
+---
 
 Once you launch it, just choose your preffered action and the intuitive GUI will prompt you for all the required information and the application will handle the rest.
 Here are a few examples of what using the tool is like:
@@ -158,15 +182,11 @@ If you no longer need Intellicrypt, you can uninstall it using the included setu
  
 	sudo python setup.py uninstall
 	
-Note: If you uninstall the application, the data on files that are still encrypted by it will not be recoverable. Make sure you decrypt all your required files prior to uninstalling the application.
+---
+> [!WARNING]  
+> If you uninstall the application, the data on files that are still encrypted by it will not be recoverable. Make sure you decrypt all your required files prior to uninstalling the application.
+---
 
-## MIT License
+### Thank you for choosing Intellicrypt!
 
-Copyright 2024 JFrancis73
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
+We hope this readme provides a clear guide to getting started with Intellicrypt. If you have any questions or encounter any issues, please don't hesitate to contact us.
