@@ -1,6 +1,6 @@
 import subprocess
 
-user = subprocess.run(["whoami"],stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+user = subprocess.run(["whoami"],stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)				#Check if the script is run as root
 if user.stdout.strip() != "root":
 	print("Please Run the setup as root")
 	exit()
@@ -8,32 +8,32 @@ if user.stdout.strip() != "root":
 import sys
 import os
 
-def Install():
+def Install():				#Install Dependencies
 	import sqlite3
 	print("[+] Installing IntelliCrypt...")
 	
-	result = subprocess.run(["apt","install","python3-pip","-y"],stdout=subprocess.PIPE, stderr=subprocess.PIPE,text=True)
+	result = subprocess.run(["apt","install","python3-pip","-y"],stdout=subprocess.PIPE, stderr=subprocess.PIPE,text=True)			#Install pip
 	if result.returncode != 0:
 		print("[-] Error", "Failed to Initialize pip")
 		return False
 	
-	user = subprocess.run(["who","am","i"],stdout=subprocess.PIPE,text=True)
+	user = subprocess.run(["who","am","i"],stdout=subprocess.PIPE,text=True)														#Get actual username of the user (not root) to install python libraries
 	user = user.stdout.split()[0].strip()
 	
-	result = subprocess.run(["sudo","-u",user,"pip","install","-r","requirements.txt"],stdout=subprocess.PIPE, stderr=subprocess.PIPE,text=True)
+	result = subprocess.run(["sudo","-u",user,"pip","install","-r","requirements.txt"],stdout=subprocess.PIPE, stderr=subprocess.PIPE,text=True)		#Install/Update python libraries (not as root)
 	#print(result.stdout)
 	#print(result.stderr)
 	if result.returncode != 0:
 		print("[-] Error", "Failed to install required python libraries")
 		return False
-	result = subprocess.run(["pip","install","-r","requirements.txt"],stdout=subprocess.PIPE, stderr=subprocess.PIPE,text=True)
+	result = subprocess.run(["pip","install","-r","requirements.txt"],stdout=subprocess.PIPE, stderr=subprocess.PIPE,text=True)		#Install/Update python libraries for root as well just in case
 	if result.returncode != 0:
 		print("[-] Error", "Failed to install required python libraries")
 		return False
 	else:
 		print("[+] Python libraries installed")
 			
-	if not os.path.isfile("/var/lib/IntelliCrypt/Intellicrypt.db"):
+	if not os.path.isfile("/var/lib/IntelliCrypt/Intellicrypt.db"):																#Create database if it doesn't exist
 		if not os.path.exists("/var/lib/IntelliCrypt/"):
 			result = subprocess.run(["mkdir","/var/lib/IntelliCrypt/"],stdout=subprocess.PIPE, stderr=subprocess.PIPE,text=True)
 			if result.returncode != 0:
@@ -49,7 +49,7 @@ def Install():
 		else:
 			print("[+] Encryption Database Created")
 			
-		result = subprocess.run(["chmod","777", "/var/lib/IntelliCrypt/"],stdout=subprocess.PIPE, stderr=subprocess.PIPE,text=True)
+		result = subprocess.run(["chmod","777", "/var/lib/IntelliCrypt/"],stdout=subprocess.PIPE, stderr=subprocess.PIPE,text=True)            #Change permissions
 		if result.returncode != 0:
 			print("[-] Error", "Failed to grant permissions")
 			return False
@@ -60,10 +60,10 @@ def Install():
 		else:
 			print("[+] Permissions Granted")
 			
-	conn = sqlite3.connect("/var/lib/IntelliCrypt/Intellicrypt.db")
+	conn = sqlite3.connect("/var/lib/IntelliCrypt/Intellicrypt.db")																																				#Create Encryption Table in database
 	conn.execute("CREATE TABLE IF NOT EXISTS Auth_Table(UID VARCHAR(32) PRIMARY KEY, FileName VARCHAR(100), Password VARCHAR(128))")
 	
-	result = subprocess.run(["apt","update"],stdout=subprocess.PIPE, stderr=subprocess.PIPE,text=True)
+	result = subprocess.run(["apt","update"],stdout=subprocess.PIPE, stderr=subprocess.PIPE,text=True)																		#Run apt-update and install linux dependancies
 	if result.returncode != 0:
 		print("[-] Error", "Failed to apt update")
 	
@@ -87,19 +87,19 @@ def Install():
 		#return False
 		
 	#path = result.stdout.strip()
-	result = subprocess.run(["chmod","775","./intellicrypt.py"],stdout=subprocess.PIPE, stderr=subprocess.PIPE,text=True)
+	result = subprocess.run(["chmod","775","./intellicrypt.py"],stdout=subprocess.PIPE, stderr=subprocess.PIPE,text=True)							#Make the python script executable
 	if result.returncode != 0:
 		print("[-] Error", "Failed to Create Executable")
 		return False
 	else:
 		print("[+] Created Executable")
 		
-	result = subprocess.run(["cp","./intellicrypt.py","/usr/local/src/"],stdout=subprocess.PIPE, stderr=subprocess.PIPE,text=True)
+	result = subprocess.run(["cp","./intellicrypt.py","/usr/local/src/"],stdout=subprocess.PIPE, stderr=subprocess.PIPE,text=True)		#Transfer source code to avoid errors due to altering file structure
 	if result.returncode != 0:
 		print("[-] Error", "Failed to transfer source.")
 		return False
 		
-	result = subprocess.run(["ln","-s","/usr/local/src/intellicrypt.py","/usr/local/bin/intellicrypt"],stdout=subprocess.PIPE, stderr=subprocess.PIPE,text=True)
+	result = subprocess.run(["ln","-s","/usr/local/src/intellicrypt.py","/usr/local/bin/intellicrypt"],stdout=subprocess.PIPE, stderr=subprocess.PIPE,text=True)     #create symlink 
 	if result.returncode != 0:
 		print("[-] Error", "Failed to set up Symlink")
 		return False
@@ -108,9 +108,9 @@ def Install():
 		
 	return True	
 
-def Uninstall():
+def Uninstall():															#Uninstall/ Undo the changes made by the Install Function
 	print("[+] Uninstalling IntelliCrypt")
-	if os.path.isfile("/var/lib/IntelliCrypt/Intellicrypt.db"):
+	if os.path.isfile("/var/lib/IntelliCrypt/Intellicrypt.db"):																																							#Remove database if it exists
 		result = subprocess.run(["rm","-rf","/var/lib/IntelliCrypt/"],stdout=subprocess.PIPE, stderr=subprocess.PIPE,text=True)
 		if result.returncode != 0:
 			print("[-] Error", "Failed to delete database")
@@ -118,17 +118,20 @@ def Uninstall():
 		else:
 			print("[+] Removed Encryption Database.")
 
-	result = subprocess.run(["rm","/usr/local/src/intellicrypt.py"],stdout=subprocess.PIPE, stderr=subprocess.PIPE,text=True)
-	if result.returncode != 0:
-		print("[-] Error", "Failed to remove source code.")
-		return False
+	if os.path.isfile("/usr/local/src/intellicrypt.py"):
+		result = subprocess.run(["rm","/usr/local/src/intellicrypt.py"],stdout=subprocess.PIPE, stderr=subprocess.PIPE,text=True)
+		if result.returncode != 0:
+			print("[-] Error", "Failed to remove source code.")																																									#Remove copied if it exists
+			return False
 		
-	result = subprocess.run(["rm","/usr/local/bin/intellicrypt"],stdout=subprocess.PIPE, stderr=subprocess.PIPE,text=True)
-	if result.returncode != 0:
-		print("[-] Error", "Failed to remove Symlink")
-		return False
-	else:
-		print("[+] Removed Symlink")
+	result = subprocess.run(["whereis","intellicrypt"],stdout=subprocess.PIPE, stderr=subprocess.PIPE,text=True)
+	if len(result.stdout.split()) > 1:
+		result = subprocess.run(["rm","/usr/local/bin/intellicrypt"],stdout=subprocess.PIPE, stderr=subprocess.PIPE,text=True)								#Remove Symlink if it exists
+		if result.returncode != 0:
+			print("[-] Error", "Failed to remove Symlink")
+			return False
+		else:
+			print("[+] Removed Symlink")
 		
 	return True
 
